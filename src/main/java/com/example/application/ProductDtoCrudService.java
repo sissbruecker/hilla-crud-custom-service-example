@@ -92,7 +92,7 @@ public class ProductDtoCrudService implements CrudService<ProductDto, Long> {
                         criteriaBuilder.like(root.get("supplier").get("supplierName"), "%" + filterValue + "%"),
                         criteriaBuilder.like(root.get("supplier").get("headquarterCity"), "%" + filterValue + "%")
                 );
-                default -> null;
+                default -> throw new IllegalArgumentException("Unknown filter property " + filter.getPropertyId());
             };
         };
     }
